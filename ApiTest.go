@@ -8,8 +8,8 @@ import (
 	"log"
 	"net/http"
 	"reflect"
-	"strings"
-	"text/scanner"
+	_"strings"
+	_"text/scanner"
 )
 
 func main() {
@@ -37,7 +37,7 @@ func main() {
 	fmt.Println(reflect.TypeOf(data))
 	//fmt.Println(data["stand_position"])
 	//if(reflect.TypeOf(body))
-
+	/*
 	const src = data
 	var s scanner.Scanner
 	s.Init(strings.NewReader(src))
@@ -46,5 +46,5 @@ func main() {
 		tok = s.Scan()
 		fmt.Println("At position", s.Pos(), ":", s.TokenText())
 	}
-
+	*/
 }
