@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"log"
+	_"log"
 	"strconv"
-	"strings"
-
-	"github.com/PuerkitoBio/goquery"
+	_"strings"
+	"time"
+	//"github.com/PuerkitoBio/goquery"
 )
 
 var (
@@ -16,6 +16,10 @@ var (
 )
 
 func main() {
+	t:=time.Now()
+	today:=strconv.Itoa(t.Year())+strconv.Itoa(int(t.Month()))+strconv.Itoa(t.Day())
+	//fmt.Println(today)
+
 	extracter("http://www.espnfc.com/scores", ".team-name", ".team-score", 20160130)
 	for i := 0; i <= length; i += 2 {
 		fmt.Printf(team[i] + " vs " + team[i+1])
