@@ -2,33 +2,31 @@ package main
 
 import (
 	"fmt"
-	_"log"
+	"log"
 	"strconv"
-	_"strings"
+	"strings"
 	"time"
-	//"github.com/PuerkitoBio/goquery"
+	"github.com/PuerkitoBio/goquery"
 )
 
 var (
 	team   = make([]string, 1000)
 	score  = make([]string, 1000)
 	length int
+	today string
 )
 
 func main() {
-	t:=time.Now()
-	today:=strconv.Itoa(t.Year())+strconv.Itoa(int(t.Month()))+strconv.Itoa(t.Day())
-	//fmt.Println(today)
-
-	extracter("http://www.espnfc.com/scores", ".team-name", ".team-score", 20160130)
+	today=today_ymd(time.Now())
+	extracter("http://www.espnfc.com/scores", ".team-name", ".team-score", today)
 	for i := 0; i <= length; i += 2 {
 		fmt.Printf(team[i] + " vs " + team[i+1])
 		fmt.Printf("\t" + score[i] + ":" + score[i+1] + "\n")
 	}
 }
 
-func extracter(url string, team_class string, score_class string, date int) {
-	doc, err := goquery.NewDocument(url + "?date=" + strconv.Itoa(date))
+func extracter(url string, team_class string, score_class string, date string) {
+	doc, err := goquery.NewDocument(url + "?date=" + date)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -48,3 +46,24 @@ func extracter(url string, team_class string, score_class string, date int) {
 		//fmt.Println(i, s.Text())
 	})
 }
+
+func today_ymd(t time.Time) string{
+	year:=strconv.Itoa(t.Year())
+	m:=int(t.Month())
+	d:=t.Day()
+	var month string
+	var day string
+	
+	if m < 10{
+		month= "0"+strconv.Itoa(m)
+	}else{
+		month= strconv.Itoa(m)
+	}
+	if d < 10{
+		day= "0"+strconv.Itoa(d)
+	}else{
+		day= strconv.Itoa(d)
+	}
+	return year+month+day
+}
+
