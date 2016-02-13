@@ -1,11 +1,10 @@
 package main
 
-import(
+import (
 	"fmt"
 )
 
-func main(){
-	msg:="test"
+func main() {
+	msg := "test"
 	fmt.Println(msg)
 }
-

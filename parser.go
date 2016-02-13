@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
 	"github.com/PuerkitoBio/goquery"
 )
 
@@ -13,11 +14,11 @@ var (
 	team   = make([]string, 1000)
 	score  = make([]string, 1000)
 	length int
-	today string
+	today  string
 )
 
 func main() {
-	today=today_ymd(time.Now())
+	today = today_ymd(time.Now())
 	extracter("http://www.espnfc.com/scores", ".team-name", ".team-score", today)
 	for i := 0; i <= length; i += 2 {
 		fmt.Printf(team[i] + " vs " + team[i+1])
@@ -47,23 +48,22 @@ func extracter(url string, team_class string, score_class string, date string) {
 	})
 }
 
-func today_ymd(t time.Time) string{
-	year:=strconv.Itoa(t.Year())
-	m:=int(t.Month())
-	d:=t.Day()
+func today_ymd(t time.Time) string {
+	year := strconv.Itoa(t.Year())
+	m := int(t.Month())
+	d := t.Day()
 	var month string
 	var day string
-	
-	if m < 10{
-		month= "0"+strconv.Itoa(m)
-	}else{
-		month= strconv.Itoa(m)
-	}
-	if d < 10{
-		day= "0"+strconv.Itoa(d)
-	}else{
-		day= strconv.Itoa(d)
-	}
-	return year+month+day
-}
 
+	if m < 10 {
+		month = "0" + strconv.Itoa(m)
+	} else {
+		month = strconv.Itoa(m)
+	}
+	if d < 10 {
+		day = "0" + strconv.Itoa(d)
+	} else {
+		day = strconv.Itoa(d)
+	}
+	return year + month + day
+}
