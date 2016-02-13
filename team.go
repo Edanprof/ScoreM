@@ -1,6 +1,6 @@
 package team
 
-type teamInfo struct{
+type TeamInfo struct{
 	name string //이름
 	nick string //별칭
 	stadium string //경기장
@@ -11,7 +11,7 @@ type teamInfo struct{
 	manager string // 감독
 }
 
-type teamStatus struct{
-	leagueRank map[string]int //참가리그별 순위
+type TeamStatus struct{
+	league_rank map[string]int //참가리그별 순위
 
 }
